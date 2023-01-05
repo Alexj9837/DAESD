@@ -1,0 +1,50 @@
+{% extends "UWEflix_APP/layout.html" %}
+{% block title %}
+$0
+{% endblock %}
+{% block content %}
+<h2>Logged messages</h2>
+{% if club_info %}
+    <table class="club_info">
+        <thead>
+        <tr>
+            <th>Club Name</th>
+            <th> Club street address</th>
+            <th>Club address number</th>
+            <th>Club City</th>
+            <th>Club Postcode</th>
+            <th>Club landline number</th>
+            <th>Club mobile number</th>
+            <th>Club rep first name</th>
+            <th>club rep last name</th>
+            <th>club rep date of birth</th>
+            <th>Club password</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for clubs in club_info %}
+            <tr>
+                <td>{{ clubs.club_rep_number  }}</td>
+                <td>{{ clubs.club_name }}</td>
+                <td>{{ clubs.club_name  }}</td>
+                <td>{{ clubs.club_address_street }}</td>
+                <td>{{ clubs.club_address_street_num  }}</td>
+                <td>{{ clubs.club_address_city }}</td>
+                <td>{{ clubs.club_address_postcode  }}</td>
+                <td>{{ clubs.club_contact_land_num }}</td>
+                <td>{{ clubs.club_contact_mobile_num  }}</td>
+                <td>{{ clubs.club_rep_fname }}</td>
+                <td>{{ clubs.club_rep_lname }}</td>
+                <td>{{ clubs.club_rep_dob  }}</td>
+                <td>{{ clubs.club_rep_Pword }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No messages have been logged.</a>.</p>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
