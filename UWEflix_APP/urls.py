@@ -11,10 +11,10 @@ home_list_view = views.clubListView.as_view(
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path("about/", views.about, name="about"),
     path("club_lists", views.about, name="club_lists"),
-    path("contact/", views.contact, name="contact"),
     path("register_club_page/", views.register_club_page, name="register_club_page"),
     path("View_clubs/", home_list_view, name="View_clubs"),
-    
+    path("update_club_page/<int:pk>/", views.update_club, name="update_club"),
+    path("delete_club_page/<int:pk>/", views.delete_club, name="delete_club"),
+
 ]

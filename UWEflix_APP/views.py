@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render``
 from django.shortcuts import redirect
 from UWEflix_APP.forms import RegisterClubForm
 from UWEflix_APP.models import register_club
 from django.views.generic import ListView
 
 # Replace the existing home function with the one below
+
 def home(request):
     return render(request, "UWEflix_APP/home.html")
 
@@ -37,3 +38,24 @@ class clubListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(clubListView, self).get_context_data(**kwargs)
         return context
+
+def update_club(request, pk):
+    club = register_club.objects.get(pk=pk)
+    form = RegisterClubForm(request.POST or None, instance=club)
+
+    if request.method == "POST":
+        if form.is_valid():
+            club = form.save(commit=False)
+
+            club.save()
+            return redirect("View_clubs")
+    else:
+        return render(request,"UWEflix_APP/update_club_page.html",{"form":form})
+
+
+def delete_club(request, pk):
+    club = register_club.objects.get(pk=pk)
+
+    club.delete()
+    return redirect("home")
+

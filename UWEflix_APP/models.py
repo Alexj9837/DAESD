@@ -17,3 +17,4 @@ class register_club(models.Model):
     
     def __str__(self):
         return self.email
+
